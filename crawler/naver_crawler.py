@@ -13,6 +13,7 @@ import math
 import re
 import collections as co
 
+
 # 기사 본문
 def Get_Article_Body(url): 
     driver.get(url)
@@ -179,8 +180,17 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname('DeepSearch'))))
 from connector import es_connector
+import json
 
 data = article_df.to_dict()
+
+# with open('settings.json','r') as f:
+#     settings = json.load(f)
+    
+# with open('mappings.json','r') as f:
+#     mappings = json.load(f)
+    
+# es.createIndex(index = 'test3',settings=settings, mappings=mappings)
 
 for d in data:
     es.dataInsert(index='test3',body=d)
