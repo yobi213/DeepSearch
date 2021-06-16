@@ -4,63 +4,63 @@ import json
 
 class ES:
     
-    es = Elasticsearch(hosts = es_config.hosts, http_auth=es_config.auth)
+    es_conn = Elasticsearch(hosts = es_config.hosts, http_auth=es_config.auth)
     
     @classmethod
     def srvHealthCheck(cls):
-        health = cls.es.cluster.health()
-        print (health)
+        health = cls.es_conn.cluster.health()
+        print(health)
 
     @classmethod
     def allIndex(cls):
         # Elasticsearch에 있는 모든 Index 조회
-        print (cls.es.cat.indices())
+        print(cls.es_conn.cat.indices())
 
     @classmethod
-    def dataInsert(cls,index,data):
+    def dataInsert(cls,index: str,data: dict):
         # ===============
         # 데이터 삽입
         # ===============
         
-        res = cls.es.index(index=index, body=data)
-        print (res)
+        res = cls.es_conn.index(index=index, body=data)
+        print(res)
 
     @classmethod
-    def searchAll(cls, indx=None):
+    def searchAll(cls, index: str=None):
         # ===============
         # 데이터 조회 [전체]
         # ===============
-        res = cls.es.search(
-            index = indx,
+        res = cls.es_conn.search(
+            index = index,
             body = {
                 "query":{"match_all":{}}
             }
         )
-        print (json.dumps(res, ensure_ascii=False, indent=4))
+        print(json.dumps(res, ensure_ascii=False, indent=4))
 
     @classmethod
-    def searchFilter(cls,index,body):
+    def searchFilter(cls,index: str,body: dict):
         # ===============
         # 데이터 조회 []
         # ===============
-        res = cls.es.search(
+        res = cls.es_conn.search(
             index = index,
             body = body
         )
-        ppr.pprint(res)
+        print(res)
 
     @classmethod
-    def createIndex(cls,index,body=None):
+    def createIndex(cls,index: str,body: dict=None):
         # ===============
         # 인덱스 생성
         # ===============
-        cls.es.indices.create(
+        cls.es_conn.indices.create(
             index = index,
             body = body
         )
         
     @classmethod
-    def deleteIndex(cls,index):
-        cls.es.indices.delete(
+    def deleteIndex(cls,index: str):
+        cls.es_conn.indices.delete(
             index = index
         )
