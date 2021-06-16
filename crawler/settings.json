@@ -1,0 +1,1 @@
+{"index": {"analysis": {"tokenizer": {"seunjeon": {"type": "seunjeon_tokenizer"}}, "analyzer": {"analyzer": {"type": "custom", "tokenizer": "seunjeon"}}}}}
