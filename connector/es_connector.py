@@ -14,7 +14,8 @@ class ES:
     @classmethod
     def allIndex(cls):
         # Elasticsearch에 있는 모든 Index 조회
-        print(cls.es_conn.cat.indices())
+        
+        return cls.es_conn.cat.indices()
 
     @classmethod
     def dataInsert(cls,index: str,data: dict):
@@ -36,7 +37,7 @@ class ES:
                 "query":{"match_all":{}}
             }
         )
-        print(json.dumps(res, ensure_ascii=False, indent=4))
+        return json.dumps(res, ensure_ascii=False, indent=4)
 
     @classmethod
     def searchFilter(cls,index: str,body: dict):
@@ -47,16 +48,18 @@ class ES:
             index = index,
             body = body
         )
-        print(res)
+        return res
 
     @classmethod
-    def createIndex(cls,index: str,body: dict=None):
+    def createIndex(cls,index: str,settings: dict=None,mappings: dict=None):
         # ===============
         # 인덱스 생성
         # ===============
         cls.es_conn.indices.create(
             index = index,
-            body = body
+            body = {
+            "settings":settings,
+            "mappings":mappings}
         )
         
     @classmethod

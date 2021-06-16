@@ -1,0 +1,1 @@
+{"properties": {"url": {"type": "text"}, "title": {"type": "text"}, "body": {"type": "text"}, "Nreply": {"type": "keyword"}, "write_time": {"type": "date"}, "press_name": {"type": "keyword"}, "seaarch_keyword": {"type": "keyword"}}}
