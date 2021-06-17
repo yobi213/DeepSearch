@@ -1,1 +1,1 @@
-{"properties": {"url": {"type": "text"}, "title": {"type": "text"}, "body": {"type": "text"}, "Nreply": {"type": "keyword"}, "write_time": {"type": "date"}, "press_name": {"type": "keyword"}, "search_keyword": {"type": "keyword"}}}
+{"properties": {"url": {"type": "text"}, "title": {"type": "text"}, "body": {"type": "text"}, "Nreply": {"type": "keyword"}, "write_time": {"type": "date"}, "press_name": {"type": "keyword"}, "search_keywords": {"type": "keyword"}}}
