@@ -13,7 +13,7 @@ yesterday = today + datetime.timedelta(days=-1)
 
 
 # 검색 키워드 입력
-search_keywords = ['보험','금융']
+search_keywords = ['보험']
 
 # 기간 설정
 years = [yesterday.strftime("%Y-%m-%d")[:4]]
