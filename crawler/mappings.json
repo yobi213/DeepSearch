@@ -1,1 +1,0 @@
-{"properties": {"url": {"type": "keyword"}, "title": {"type": "text","analyzer": "my_analyzer","fields":{"keyword":{"type":"keyword"}}}, "body": {"type": "text","analyzer": "my_analyzer","fields":{"keyword":{"type":"keyword"}}}, "Nreply": {"type": "integer"}, "write_time": {"type": "date"}, "press_name": {"type": "keyword"}, "search_keywords": {"type": "keyword"}}}

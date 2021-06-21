@@ -1,4 +1,4 @@
-from .config import es_config, strapi_config
+from .config import strapi_config
 import requests
 import json
 

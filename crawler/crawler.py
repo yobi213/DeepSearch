@@ -34,23 +34,19 @@ urls = article_url_df['url']
 article_dicts = []
 reply_dfs = []
 
-#elasticsearch
+#ElasticSearch
 es = es_connector.ES()
-
-# with open('settings.json','r') as f:
-#     settings = json.load(f)
-    
-# with open('mappings.json','r') as f:
-#     mappings = json.load(f)
-    
+# from utils import es_schema
+# settings = es_schema.settings
+# mappings = es_schema.mappings
 # es.createIndex(index='news-naver',settings=settings, mappings=mappings)
 
 for i in range(len(article_url_df)):
     try:
         article_dict = Get_Article_Body(article_url_df['url'][i],driver)
         article_dict['search_keywords'] = article_url_df['search_keyword'][i]
-        #print(article_dict)
-        es.dataInsert(index='news-naver', data=article_dict)
+        print(article_dict)
+        #es.dataInsert(index='news-naver', data=article_dict)
         #reply_df = ariticle_reply()
         #reply_dfs.append(reply_df)
     except:

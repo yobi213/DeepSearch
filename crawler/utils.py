@@ -1,18 +1,66 @@
-import requests
 import pandas as pd
-import numpy as np
 import time
 import datetime
 from bs4 import BeautifulSoup
-from selenium.webdriver import Chrome
-from tqdm import tqdm_notebook
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
 import pyperclip
-import math
-import re
 import collections as co
 
+
+class es_schema:
+    mappings = {
+  "properties": {
+    "url": {
+      "type": "keyword"
+    },
+    "title": {
+      "type": "text",
+      "analyzer": "my_analyzer",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "body": {
+      "type": "text",
+      "analyzer": "my_analyzer",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "Nreply": {
+      "type": "integer"
+    },
+    "write_time": {
+      "type": "date"
+    },
+    "press_name": {
+      "type": "keyword"
+    },
+    "search_keywords": {
+      "type": "keyword"
+    }
+  }
+}
+    settings = {
+  "index": {
+    "analysis": {
+      "tokenizer": {
+        "seunjeon": {
+          "type": "seunjeon_tokenizer"
+        }
+      },
+      "analyzer": {
+        "my_analyzer": {
+          "type": "custom",
+          "tokenizer": "seunjeon"
+        }
+      }
+    }
+  }
+}
 
 # 기사 본문
 def Get_Article_Body(url,driver): 
