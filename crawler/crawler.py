@@ -45,8 +45,8 @@ for i in range(len(article_url_df)):
     try:
         article_dict = Get_Article_Body(article_url_df['url'][i],driver)
         article_dict['search_keywords'] = article_url_df['search_keyword'][i]
-        print(article_dict)
-        #es.dataInsert(index='news-naver', data=article_dict)
+        #print(article_dict)
+        es.dataInsert(index='news-naver', data=article_dict)
         #reply_df = ariticle_reply()
         #reply_dfs.append(reply_df)
     except:
