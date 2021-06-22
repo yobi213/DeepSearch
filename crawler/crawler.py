@@ -25,7 +25,7 @@ driver = webdriver.Chrome("chromedriver", options = chrome_options)
 today = datetime.datetime.now()
 yesterday = today + datetime.timedelta(days=-1)
 years = [yesterday.strftime("%Y-%m-%d")[:4]]
-months = [datetime.datetime.now().strftime("%Y-%m-%d")[5:7]]
+months = [yesterday.strftime("%Y-%m-%d")[5:7]]
 all_days = [yesterday.strftime("%Y-%m-%d")[-2:]]
 article_url_df = get_article_df(years, months, all_days, search_keywords, driver)
 urls = article_url_df['url']
