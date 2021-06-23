@@ -9,10 +9,10 @@ import collections as co
 class es_schema:
     mappings = {
   "properties": {
-    "url": {
+    "URL": {
       "type": "keyword"
     },
-    "title": {
+    "제목": {
       "type": "text",
       "analyzer": "my_analyzer",
       "fields": {
@@ -21,7 +21,7 @@ class es_schema:
         }
       }
     },
-    "body": {
+    "본문": {
       "type": "text",
       "analyzer": "my_analyzer",
       "fields": {
@@ -30,16 +30,16 @@ class es_schema:
         }
       }
     },
-    "Nreply": {
+    "댓글수": {
       "type": "integer"
     },
-    "write_time": {
+    "작성일시": {
       "type": "date"
     },
-    "press_name": {
+    "언론사": {
       "type": "keyword"
     },
-    "search_keywords": {
+    "토픽": {
       "type": "keyword"
     }
   }
@@ -89,8 +89,11 @@ def Get_Article_Body(url,driver):
 
         for b in body: 
             text = text.join(b.text) 
-    tmp_article = { 'url':url, 'title':title,'body':text ,'Nreply':Nreply,'write_time':write_time,
-                   'press_name':press_name} 
+    tmp_article = { 'URL':url, '제목':title,'본문':text ,'댓글수':Nreply,'작성일시':write_time,
+                   '언론사':press_name} 
+    
+#        tmp_article = { 'url':url, 'title':title,'body':text ,'Nreply':Nreply,'write_time':write_time,
+#                    'press_name':press_name} 
     return tmp_article
 
 # 댓글
