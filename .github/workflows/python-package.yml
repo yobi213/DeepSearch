@@ -14,6 +14,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: env
+      env:
+        ES_HOSTS: '${{ secrets.ES_HOSTS }}'
+        ES_ID: '${{ secrets.ES_ID }}'
+        ES_PASSWD: '${{ secrets.ES_PASSWD }}'
+        STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
+      run: python secret_test.py
     - uses: actions/checkout@v2
     - name: Set up Python 3.7
       uses: actions/setup-python@v2
@@ -24,13 +31,8 @@ jobs:
 #         STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
       with:
         python-version: 3.7
-        ES_HOSTS: '${{ secrets.ES_HOSTS }}'
-        ES_ID: '${{ secrets.ES_ID }}'
-        ES_PASSWD: '${{ secrets.ES_PASSWD }}'
-        STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
     - name: Install chrome
       run: |
-        python secret_test.py
         sudo apt-get install unzip chromium-browser
         sudo wget https://chromedriver.storage.googleapis.com/91.0.4472.101/chromedriver_linux64.zip
         sudo unzip chromedriver_linux64.zip
