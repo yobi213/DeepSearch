@@ -24,9 +24,9 @@ jobs:
         STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
       with:
         python-version: 3.7
-      run: python secret_test.py
     - name: Install chrome
       run: |
+        python secret_test.py
         sudo apt-get install unzip chromium-browser
         sudo wget https://chromedriver.storage.googleapis.com/91.0.4472.101/chromedriver_linux64.zip
         sudo unzip chromedriver_linux64.zip
