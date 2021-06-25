@@ -18,10 +18,10 @@ jobs:
     - name: Set up Python 3.7
       uses: actions/setup-python@v2
       env:
-        ES_HOSTS: ${{ secrets.ES_HOSTS }}
-        ES_ID: ${{ secrets.ES_ID }}
-        ES_PASSWD: ${{ secrets.ES_PASSWD }}
-        STRAPI_HOSTS: ${{ secrets.STRAPI_HOSTS }}
+        ES_HOSTS: '${{ secrets.ES_HOSTS }}'
+        ES_ID: '${{ secrets.ES_ID }}'
+        ES_PASSWD: '${{ secrets.ES_PASSWD }}'
+        STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
       with:
         python-version: 3.7
     - name: Install chrome
