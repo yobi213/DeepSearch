@@ -36,7 +36,7 @@ reply_dfs = []
 
 #ElasticSearch
 es = es_connector.ES()
-index_name = 'news-naver'
+index_name = 'dailynews-naver'
 # from utils import es_schema
 # settings = es_schema.settings
 # mappings = es_schema.mappings
