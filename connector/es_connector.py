@@ -1,10 +1,10 @@
-from .config import es_config 
 from elasticsearch import Elasticsearch
 import json
+import os
 
 class ES:
     
-    es_conn = Elasticsearch(hosts = es_config.hosts, http_auth=es_config.auth)
+    es_conn = Elasticsearch(hosts = os.getenv('ES_HOSTS'), http_auth=(os.getenv('ES_ID'), os.getenv('ES_PASSWD')))
     
     @classmethod
     def srvHealthCheck(cls):

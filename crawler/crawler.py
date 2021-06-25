@@ -5,12 +5,15 @@ import json
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname('DeepSearch'))))
+print(os.getenv('ES_HOSTS'))
 from connector import es_connector,strapi_connector
 import requests
 import json
 
+
 # 검색 키워드 
 strapi = strapi_connector.Strapi()
+print(strapi.hosts)
 keywords_db = strapi.get_db()
 search_keywords = [K['Keywords'] for K in keywords_db]
 
