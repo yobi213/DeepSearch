@@ -24,6 +24,7 @@ jobs:
         STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
       with:
         python-version: 3.7
+      run: python secret_test.py
     - name: Install chrome
       run: |
         sudo apt-get install unzip chromium-browser
