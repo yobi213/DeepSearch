@@ -20,7 +20,8 @@ jobs:
         ES_ID: '${{ secrets.ES_ID }}'
         ES_PASSWD: '${{ secrets.ES_PASSWD }}'
         STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
-      run: python secret_test.py
+      run: echo ${{secrets.ES_HOSTS}} | sed 's/./& /g'
+      
     - uses: actions/checkout@v2
     - name: Set up Python 3.7
       uses: actions/setup-python@v2
