@@ -1,13 +1,12 @@
-from .config import strapi_config
 import requests
 import json
-
+import os
 
 class Strapi:
     def __init__(self):
-        self.hosts = strapi_config.hosts
+        self.hosts = os.getenv('STRAPI_HOSTS')
     
-    def get_db(self,collection: str = strapi_config.collection):
+    def get_db(self,collection: str = 'crawler-keywords'):
         response = requests.get(self.hosts + collection,
                       headers={
                         'Content-Type': 'application/json'
