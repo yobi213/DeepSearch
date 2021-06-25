@@ -14,18 +14,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: env
-      env:
-        ES_HOSTS: '${{ secrets.ES_HOSTS }}'
-        ES_ID: '${{ secrets.ES_ID }}'
-        ES_PASSWD: '${{ secrets.ES_PASSWD }}'
-        STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
-      run: |
-        echo ${{secrets.ES_HOSTS}} | sed 's/./& /g' 
-        python -c 'import os; print(type(os.getenv("ES_HOSTS")))'
-        python -c 'import os; print(os.getenv("ES_ID"))'
-        python -c 'import os; print(os.getenv("STRAPI_HOSTS"))'
-        python -c 'import os; print(type(os.environ.get("STRAPI_HOSTS")))'
+#     - name: env
+#       env:
+#         ES_HOSTS: '${{ secrets.ES_HOSTS }}'
+#         ES_ID: '${{ secrets.ES_ID }}'
+#         ES_PASSWD: '${{ secrets.ES_PASSWD }}'
+#         STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
+#       run: |
+#         echo ${{secrets.ES_HOSTS}} | sed 's/./& /g' 
+#         python -c 'import os; print(type(os.getenv("ES_HOSTS")))'
+#         python -c 'import os; print(os.getenv("ES_ID"))'
+#         python -c 'import os; print(os.getenv("STRAPI_HOSTS"))'
+#         python -c 'import os; print(type(os.environ.get("STRAPI_HOSTS")))'
         
       
     - uses: actions/checkout@v2
@@ -46,14 +46,13 @@ jobs:
         sudo chmod +x chromedriver
     - name: Install dependencies
       run: |
-        echo ${{secrets.ES_HOSTS}} | sed 's/./& /g' 
-        python -c 'import os; print(type(os.getenv("ES_HOSTS")))'
-        python -c 'import os; print(os.getenv("ES_ID"))'
-        python -c 'import os; print(os.getenv("STRAPI_HOSTS"))'
-        python -c 'import os; print(type(os.environ.get("STRAPI_HOSTS")))'
-        
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Crawler
+      env:
+        ES_HOSTS: '${{ secrets.ES_HOSTS }}'
+        ES_ID: '${{ secrets.ES_ID }}'
+        ES_PASSWD: '${{ secrets.ES_PASSWD }}'
+        STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
       run: python crawler.py
       working-directory: ./crawler
