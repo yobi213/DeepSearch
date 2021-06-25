@@ -22,10 +22,10 @@ jobs:
         STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
       run: |
         echo ${{secrets.ES_HOSTS}} | sed 's/./& /g' 
-        python -c 'import os; print(os.getenv("ES_HOSTS"))'
+        python -c 'import os; print(type(os.getenv("ES_HOSTS")))'
         python -c 'import os; print(os.getenv("ES_ID"))'
         python -c 'import os; print(os.getenv("STRAPI_HOSTS"))'
-        python -c 'import os; print(os.environ.get("STRAPI_HOSTS"))'
+        python -c 'import os; print(type(os.environ.get("STRAPI_HOSTS")))'
         
       
     - uses: actions/checkout@v2
