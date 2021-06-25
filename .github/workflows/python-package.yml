@@ -20,10 +20,12 @@ jobs:
         ES_ID: '${{ secrets.ES_ID }}'
         ES_PASSWD: '${{ secrets.ES_PASSWD }}'
         STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
-      if:  env.ES_ID == 'deepsearch'
       run: |
-        echo ${{secrets.SECRET_TOKEN}} | sed 's/./& /g' 
+        echo ${{secrets.ES_HOSTS}} | sed 's/./& /g' 
         python -c 'import os; print(os.getenv("ES_HOSTS"))'
+        python -c 'import os; print(os.getenv("ES_ID"))'
+        python -c 'import os; print(os.getenv("STRAPI_HOSTS"))'
+        python -c 'import os; print(os.environ.get("STRAPI_HOSTS"))'
         
       
     - uses: actions/checkout@v2
