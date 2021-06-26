@@ -3,10 +3,12 @@
 
 name: News Crawler
 
+# on:
+#   schedule:
+#      - cron:  '0 0 * * *'
 on:
-  schedule:
-     - cron:  '0 22 * * *'
-
+  push:
+    branches: main
       
 jobs:
   build:
