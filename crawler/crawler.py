@@ -13,6 +13,7 @@ import json
 # 검색 키워드 
 strapi = strapi_connector.Strapi()
 keywords_db = strapi.get_db()
+print(keywords_db)
 search_keywords = [K['Keywords'] for K in keywords_db]
 
 #chrome driver
