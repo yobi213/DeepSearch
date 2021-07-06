@@ -9,7 +9,7 @@ es = es_connector.ES()
 index_name = 'dailynews-naver'
 target_day = datetime.date.today() - datetime.timedelta(days=1)
 target_day = target_day.strftime('%Y-%m-%d')
-
+webhook_url = os.getenv('WEBHOOK')
 
 query = '''
 {"sort": [
@@ -29,7 +29,7 @@ query = '''
 ''' % (target_day)
 
 res = es.searchFilter(index = index_name, body = query)
-webhook_url = "https://hooks.slack.com/services/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" 
+webhook_url = "https://hooks.slack.com/services/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" 
 
 webhook_payload = {'text':'Daily News Monitoring', 'blocks':[]}
 info_section = {'type':'section', 'text': {'type':'mrkdwn','text':f"{datetime.date.today()}"}}
