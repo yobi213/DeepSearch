@@ -3,12 +3,12 @@
 
 name: News Crawler
 
-# on:
-#   schedule:
-#      - cron:  '0 0 * * *'
 on:
-  push:
-    branches: webhook
+  schedule:
+     - cron:  '0 0 * * *'
+# on:
+#   push:
+#     branches: webhook
       
 jobs:
   build:
@@ -33,13 +33,18 @@ jobs:
         pip install -r requirements.txt
     - name: Run Crawler
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ES_HOSTS: '${{ secrets.ES_HOSTS }}'
         ES_ID: '${{ secrets.ES_ID }}'
         ES_PASSWD: '${{ secrets.ES_PASSWD }}'
         STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
-        WEBHOOK: '${{ secrets.WEBHOOK }}'
-      #run: python crawler.py
-      #working-directory: ./crawler
+      run: python crawler.py
+      working-directory: ./crawler
+    - name: Run webhook
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ES_HOSTS: '${{ secrets.ES_HOSTS }}'
+          ES_ID: '${{ secrets.ES_ID }}'
+          ES_PASSWD: '${{ secrets.ES_PASSWD }}'
+          WEBHOOK: '${{ secrets.WEBHOOK }}'
       run: python webhook_news.py
       working-directory: ./webhook
