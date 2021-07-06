@@ -24,10 +24,14 @@ driver = webdriver.Chrome("chromedriver", options = chrome_options)
 
 # 기간 설정
 today = datetime.datetime.now()
-yesterday = today + datetime.timedelta(days=-1)
-years = [yesterday.strftime("%Y-%m-%d")[:4]]
-months = [yesterday.strftime("%Y-%m-%d")[5:7]]
-all_days = [yesterday.strftime("%Y-%m-%d")[-2:]]
+# yesterday = today + datetime.timedelta(days=-1)
+# years = [yesterday.strftime("%Y-%m-%d")[:4]]
+# months = [yesterday.strftime("%Y-%m-%d")[5:7]]
+# all_days = [yesterday.strftime("%Y-%m-%d")[-2:]]
+
+years = [today.strftime("%Y-%m-%d")[:4]]
+months = [today.strftime("%Y-%m-%d")[5:7]]
+all_days = [today.strftime("%Y-%m-%d")[-2:]]
 article_url_df = get_article_df(years, months, all_days, search_keywords, driver)
 urls = article_url_df['url']
 
