@@ -35,7 +35,8 @@ class ES:
             index = index,
             body = {
                 "query":{"match_all":{}}
-            }
+            },
+            size = 1000
         )
         return json.dumps(res, ensure_ascii=False, indent=4)
 
@@ -46,7 +47,8 @@ class ES:
         # ===============
         res = cls.es_conn.search(
             index = index,
-            body = body
+            body = body,
+            size = 1000
         )
         return res
 
