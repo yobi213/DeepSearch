@@ -29,7 +29,7 @@ query = '''
 ''' % (target_day)
 
 res = es.searchFilter(index = index_name, body = query)
-webhook_url = "https://hooks.slack.com/services/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" 
+webhook_url = "https://hooks.slack.com/services/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" 
 
 webhook_payload = {'text':'Daily News Monitoring', 'blocks':[]}
 info_section = {'type':'section', 'text': {'type':'mrkdwn','text':f"{datetime.date.today()}"}}
