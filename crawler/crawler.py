@@ -24,11 +24,13 @@ driver = webdriver.Chrome("chromedriver", options = chrome_options)
 
 # 기간 설정
 today = datetime.datetime.now()
+# kst 기준
 # yesterday = today + datetime.timedelta(days=-1)
 # years = [yesterday.strftime("%Y-%m-%d")[:4]]
 # months = [yesterday.strftime("%Y-%m-%d")[5:7]]
 # all_days = [yesterday.strftime("%Y-%m-%d")[-2:]]
 
+# utc 기준
 years = [today.strftime("%Y-%m-%d")[:4]]
 months = [today.strftime("%Y-%m-%d")[5:7]]
 all_days = [today.strftime("%Y-%m-%d")[-2:]]
@@ -42,7 +44,10 @@ reply_dfs = []
 #ElasticSearch
 es = es_connector.ES()
 index_name = 'dailynews-naver'
-index_name = 'test_crawler'
+# test용 index
+# index_name = 'test_crawler'
+
+# 새로운 index 생성
 # from utils import es_schema
 # settings = es_schema.settings
 # mappings = es_schema.mappings
