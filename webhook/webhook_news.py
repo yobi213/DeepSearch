@@ -7,8 +7,9 @@ from connector import es_connector
 
 es = es_connector.ES()
 index_name = 'dailynews-naver'
-target_day = datetime.date.today() - datetime.timedelta(days=1)
-target_day = target_day.strftime('%Y-%m-%d')
+target_day = datetime.date.today()
+# target_day = datetime.date.today() - datetime.timedelta(days=1)
+# target_day = target_day.strftime('%Y-%m-%d')
 webhook_url = os.getenv('WEBHOOK')
 
 query = '''
