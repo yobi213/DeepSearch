@@ -1,0 +1,1 @@
+{"properties": {"url": {"type": "text"}, "title": {"type": "text", "analyzer": "seunjeon_tokenizer"}, "body": {"type": "text", "analyzer": "seunjeon_tokenizer"}, "Nreply": {"type": "keyword"}, "write_time": {"type": "date"}, "press_name": {"type": "keyword"}, "search_keyword": {"type": "keyword"}}}
