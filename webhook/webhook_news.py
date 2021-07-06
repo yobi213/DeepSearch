@@ -7,6 +7,7 @@ from connector import es_connector
 
 es = es_connector.ES()
 index_name = 'dailynews-naver'
+index_name = 'news-naver'
 target_day = datetime.date.today()
 # target_day = datetime.date.today() - datetime.timedelta(days=1)
 target_day = target_day.strftime('%Y-%m-%d')
@@ -32,7 +33,7 @@ query = '''
 res = es.searchFilter(index = index_name, body = query)
 
 webhook_payload = {'text':'Daily News Monitoring', 'blocks':[]}
-info_section = {'type':'section', 'text': {'type':'mrkdwn','text':f"{datetime.date.today()}"}}
+info_section = {'type':'section', 'text': {'type':'mrkdwn','text':f"{datetime.date.today() + datetime.timedelta(days=1)}"}}
 divider_section = {'type':'divider'}
 webhook_payload['blocks'].append(info_section)
 webhook_payload['blocks'].append(divider_section)
