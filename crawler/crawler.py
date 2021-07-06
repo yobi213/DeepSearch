@@ -42,7 +42,7 @@ reply_dfs = []
 #ElasticSearch
 es = es_connector.ES()
 index_name = 'dailynews-naver'
-index_name = 'news-naver'
+index_name = 'test_crawler'
 # from utils import es_schema
 # settings = es_schema.settings
 # mappings = es_schema.mappings
