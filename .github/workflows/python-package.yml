@@ -3,12 +3,12 @@
 
 name: News Crawler
 
-on:
-  schedule:
-     - cron:  '0 0 * * *'
 # on:
-#   push:
-#     branches: main
+#   schedule:
+#      - cron:  '0 0 * * *'
+on:
+  push:
+    branches: webhook
       
 jobs:
   build:
@@ -37,5 +37,7 @@ jobs:
         ES_ID: '${{ secrets.ES_ID }}'
         ES_PASSWD: '${{ secrets.ES_PASSWD }}'
         STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
-      run: python crawler.py
-      working-directory: ./crawler
+      #run: python crawler.py
+      #working-directory: ./crawler
+      run: python webhook_news.py
+      working-directory: ./webhook
