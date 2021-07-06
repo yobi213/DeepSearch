@@ -33,6 +33,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run Crawler
       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ES_HOSTS: '${{ secrets.ES_HOSTS }}'
         ES_ID: '${{ secrets.ES_ID }}'
         ES_PASSWD: '${{ secrets.ES_PASSWD }}'
