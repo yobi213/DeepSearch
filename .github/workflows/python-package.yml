@@ -37,6 +37,7 @@ jobs:
         ES_ID: '${{ secrets.ES_ID }}'
         ES_PASSWD: '${{ secrets.ES_PASSWD }}'
         STRAPI_HOSTS: '${{ secrets.STRAPI_HOSTS }}'
+        WEBHOOK: '${{ secrets.WEBHOOK }}'
       #run: python crawler.py
       #working-directory: ./crawler
       run: python webhook_news.py
