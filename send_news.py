@@ -39,7 +39,6 @@ index_name = 'dailynews-naver'
 target_day = datetime.date.today() - datetime.timedelta(days=1)
 # utc
 # target_day = datetime.date.today()
-
 target_day = target_day.strftime('%Y-%m-%d')
 webhook_url = os.getenv('WEBHOOK')
 
