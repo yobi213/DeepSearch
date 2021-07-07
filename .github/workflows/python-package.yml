@@ -3,12 +3,12 @@
 
 name: News Crawler
 
-on:
-  schedule:
-     - cron:  '0 22 * * *'
 # on:
-#   push:
-#     branches: static_dashboard
+#   schedule:
+#      - cron:  '0 22 * * *'
+on:
+  push:
+    branches: static_dashboard
       
 jobs:
   build:
@@ -39,7 +39,7 @@ jobs:
 #       working-directory: ./crawler
     - name: Run sending news
       env:
-          #FULL_ACCESS_TOKEN: ${{ secrets.FULL_ACCESS_TOKEN }}
+          FULL_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ES_HOSTS: '${{ secrets.ES_HOSTS }}'
           ES_ID: '${{ secrets.ES_ID }}'
