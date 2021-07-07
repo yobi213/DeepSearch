@@ -34,10 +34,12 @@ es = es_connector.ES()
 index_name = 'dailynews-naver'
 #test index
 #index_name = 'test_crawler'
+
 # kst
-target_day = datetime.date.today()
+target_day = datetime.date.today() - datetime.timedelta(days=1)
 # utc
-# target_day = datetime.date.today() - datetime.timedelta(days=1)
+# target_day = datetime.date.today()
+
 target_day = target_day.strftime('%Y-%m-%d')
 webhook_url = os.getenv('WEBHOOK')
 
