@@ -130,7 +130,7 @@ os.environ["UPLOAD_CONTENTS"] = upload_contents
 issue_title = (
     f"{datetime.date.today().strftime('%Y-%m-%d')} Daily News Monitoring"
 )
-access_token = os.environ["FULL_ACCESS_TOKEN "]
+access_token = os.getenv('FULL_ACCESS_TOKEN')
 repository_name = "DeepSearch"
 
 repo = get_github_repo(access_token, repository_name)
