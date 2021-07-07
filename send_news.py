@@ -131,7 +131,7 @@ issue_title = (
     f"{datetime.date.today().strftime('%Y-%m-%d')} Daily News Monitoring"
 )
 access_token = os.getenv('FULL_ACCESS_TOKEN')
-repository_name = "DeepSearch"
+repository_name = "lina-dna/DeepSearch"
 
 repo = get_github_repo(access_token, repository_name)
 upload_github_issue(repo, issue_title, upload_contents)
