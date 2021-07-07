@@ -129,7 +129,7 @@ os.environ["UPLOAD_CONTENTS"] = upload_contents
 
 # generate result as github issue
 issue_title = (
-    f"{datetime.today().strftime('%Y-%m-%d')} Daily News Monitoring"
+    f"{datetime.date.today().strftime('%Y-%m-%d')} Daily News Monitoring"
 )
 access_token = os.environ["GITHUB_TOKEN"]
 repository_name = "DeepSearch"
