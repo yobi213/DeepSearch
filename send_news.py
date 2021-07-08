@@ -124,18 +124,18 @@ for i in range(len(res['hits']['hits'])):
     upload_contents += f"{j}. {title} ([Link]({url}))\n\n"
     
     
-os.environ["UPLOAD_CONTENTS"] = upload_contents
+# os.environ["UPLOAD_CONTENTS"] = upload_contents
 
-# generate result as github issue
-issue_title = (
-    f"{datetime.date.today().strftime('%Y-%m-%d')} Daily News Monitoring"
-)
-access_token = os.getenv('FULL_ACCESS_TOKEN')
-repository_name = "DeepSearch"
+# # generate result as github issue
+# issue_title = (
+#     f"{datetime.date.today().strftime('%Y-%m-%d')} Daily News Monitoring"
+# )
+# access_token = os.getenv('FULL_ACCESS_TOKEN')
+# repository_name = "DeepSearch"
 
-repo = get_github_repo(access_token, repository_name)
-upload_github_issue(repo, issue_title, upload_contents)
-print("Upload Github Issue Success!")
+# repo = get_github_repo(access_token, repository_name)
+# upload_github_issue(repo, issue_title, upload_contents)
+# print("Upload Github Issue Success!")
 
 with open("README.md", "w") as readmeFile:
     readmeFile.write(upload_contents)
