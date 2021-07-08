@@ -42,6 +42,8 @@ target_day = datetime.date.today()
 target_day = target_day.strftime('%Y-%m-%d')
 webhook_url = os.getenv('WEBHOOK')
 
+issue_day = datetime.date.today() + datetime.timedelta(days=1)
+
 query = '''
 {"sort": [
     {
@@ -65,7 +67,7 @@ res = es.searchFilter(index = index_name, body = query)
 # slack webhook
 
 webhook_payload = {'text':'Daily News Monitoring', 'blocks':[]}
-info_section = {'type':'section', 'text': {'type':'mrkdwn','text':f"{datetime.date.today() + datetime.timedelta(days=1)}"}}
+info_section = {'type':'section', 'text': {'type':'mrkdwn','text':f"{issue_day}"}}
 divider_section = {'type':'divider'}
 webhook_payload['blocks'].append(info_section)
 webhook_payload['blocks'].append(divider_section)
@@ -102,7 +104,7 @@ requests.post(url=webhook_url, json=webhook_payload)
 #github readme
 
 upload_contents = '## Daily News Monitoring \n\n'
-upload_contents += f"{datetime.date.today() + datetime.timedelta(days=1)} \n\n"
+upload_contents += f"{issue_day} \n\n"
 upload_contents += "----------\n\n"
 topic = res['hits']['hits'][0]['_source']['토픽']
 upload_contents += f"*[{topic} 소식]*\n\n"
@@ -128,7 +130,7 @@ for i in range(len(res['hits']['hits'])):
 
 # generate result as github issue
 issue_title = (
-    f"{datetime.date.today().strftime('%Y-%m-%d')} Daily News Monitoring"
+    f"{issue_day} Daily News Monitoring"
 )
 access_token = os.getenv('FULL_ACCESS_TOKEN')
 user_name = "lina-dna"
