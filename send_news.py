@@ -7,7 +7,7 @@ from connector import es_connector
 from github import Github
 
 
-def get_github_repo(access_token, repository_name):
+def get_github_repo(access_token, user_name, repository_name):
     """
     github repo object를 얻는 함수
     :param access_token: Github access token
@@ -15,7 +15,7 @@ def get_github_repo(access_token, repository_name):
     :return: repo object
     """
     g = Github(access_token)
-    repo = g.get_user().get_repo(repository_name)
+    repo = g.get_user(user_name).get_repo(repository_name)
     return repo
 
 
@@ -126,16 +126,17 @@ for i in range(len(res['hits']['hits'])):
     
 # os.environ["UPLOAD_CONTENTS"] = upload_contents
 
-# # generate result as github issue
-# issue_title = (
-#     f"{datetime.date.today().strftime('%Y-%m-%d')} Daily News Monitoring"
-# )
-# access_token = os.getenv('FULL_ACCESS_TOKEN')
-# repository_name = "DeepSearch"
+# generate result as github issue
+issue_title = (
+    f"{datetime.date.today().strftime('%Y-%m-%d')} Daily News Monitoring"
+)
+access_token = os.getenv('FULL_ACCESS_TOKEN')
+user_name = "lina-dna"
+repository_name = "DeepSearch"
 
-# repo = get_github_repo(access_token, repository_name)
-# upload_github_issue(repo, issue_title, upload_contents)
-# print("Upload Github Issue Success!")
+repo = get_github_repo(access_token,user_name,repository_name)
+upload_github_issue(repo, issue_title, upload_contents)
+print("Upload Github Issue Success!")
 
 with open("README.md", "w") as readmeFile:
     readmeFile.write(upload_contents)
