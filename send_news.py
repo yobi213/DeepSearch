@@ -36,9 +36,9 @@ index_name = 'dailynews-naver'
 #index_name = 'test_crawler'
 
 # kst
-target_day = datetime.date.today() - datetime.timedelta(days=1)
+# target_day = datetime.date.today() - datetime.timedelta(days=1)
 # utc
-# target_day = datetime.date.today()
+target_day = datetime.date.today()
 target_day = target_day.strftime('%Y-%m-%d')
 webhook_url = os.getenv('WEBHOOK')
 
@@ -96,7 +96,7 @@ for i in range(len(res['hits']['hits'])):
     news_section = {'type':'section', 'text' :{'type':'mrkdwn', 'text': f"{j}. {title} (<{url}|Link>)"}}
     webhook_payload['blocks'].append(news_section)
     
-#requests.post(url=webhook_url, json=webhook_payload)
+requests.post(url=webhook_url, json=webhook_payload)
 
 
 #github readme
