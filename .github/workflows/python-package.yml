@@ -24,7 +24,7 @@ jobs:
       run: |
         sudo apt-get install unzip chromium-browser
         sudo wget https://chromedriver.storage.googleapis.com/91.0.4472.101/chromedriver_linux64.zip
-        sudo unzip chromedriver_linux64.zip -y
+        sudo unzip -o chromedriver_linux64.zip
         sudo chmod +x chromedriver
     - name: Install dependencies
       run: |
